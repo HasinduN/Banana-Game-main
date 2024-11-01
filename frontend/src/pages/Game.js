@@ -11,7 +11,8 @@ const Game = () => {
   const fetchQuestion = async () => {
     try {
       const response = await axios.get("https://marcconrad.com/uob/banana/api.php"); // Adjust to exact endpoint if needed
-      setQuestionImage(response.data.image); // Assume response contains { image: "base64data" }
+      console.log(response);
+      setQuestionImage(response.data.question); // Assume response contains { image: "base64data" }
       setFeedback(""); // Clear feedback on loading a new question
       setUserAnswer(""); // Clear previous answer
     } catch (error) {
@@ -27,7 +28,7 @@ const Game = () => {
       });
       
       // Assuming the response contains a boolean or similar format to check correctness
-      if (response.data.correct) {
+      if (response.data.solution) {
         setFeedback("Correct! 🎉");
         // Fetch a new question if correct
         fetchQuestion();
@@ -49,7 +50,7 @@ const Game = () => {
     <div style={styles.container}>
       <h2>Answer the Question</h2>
       {questionImage ? (
-        <img src={`data:image/png;base64,${questionImage}`} alt="Question" style={styles.image} />
+        <img src={questionImage} alt="Question" style={styles.image} />
       ) : (
         <p>Loading question...</p>
       )}
