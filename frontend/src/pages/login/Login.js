@@ -2,7 +2,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
+import "./Login.css"; // Import the CSS file
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -12,14 +13,13 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // Ensure the URL matches your backend configuration
       const response = await axios.post("http://localhost:5000/api/auth/login", {
         username,
         password,
       });
       if (response.status === 200) {
-        login(response.data.user); // Update the auth context
-        navigate("/dashboard"); // Redirect to dashboard
+        login(response.data.user);
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -27,33 +27,31 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="login-container">
       <h2>Login</h2>
       <input
         type="text"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        style={styles.input}
+        className="login-input"
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={styles.input}
+        className="login-input"
       />
-      <button onClick={handleLogin} style={styles.button}>
+      <button onClick={handleLogin} className="login-button">
         Login
       </button>
+      <p className="register-text">
+        Don't have an account? <a href="/register">Register here</a>
+      </p>
     </div>
   );
 };
 
-const styles = {
-  container: { display: "flex", flexDirection: "column", alignItems: "center", padding: "20px" },
-  input: { padding: "10px", marginBottom: "10px", width: "100%", maxWidth: "300px" },
-  button: { padding: "10px 20px" },
-};
-
 export default Login;
+

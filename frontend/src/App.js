@@ -3,10 +3,10 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Game from "./pages/Game";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Game from "./pages/game/Game";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
 

@@ -1,35 +1,33 @@
-// src/context/AuthContext.js
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-const initialState = {
-  isAuthenticated: false,
-  user: null,
-};
+export const AuthContext = createContext();
 
-const AuthContext = createContext();
+export const AuthProvider = ({ children }) => {
+  // Initialize auth state from localStorage if available
+  const [auth, setAuth] = useState(() => {
+    const storedAuth = JSON.parse(localStorage.getItem("auth"));
+    return storedAuth ? storedAuth : { isAuthenticated: false, user: null };
+  });
 
-const authReducer = (state, action) => {
-  switch (action.type) {
-    case "LOGIN":
-      return { ...state, isAuthenticated: true, user: action.payload };
-    case "LOGOUT":
-      return { ...state, isAuthenticated: false, user: null };
-    default:
-      return state;
-  }
-};
+  // Save to localStorage when auth state changes
+  useEffect(() => {
+    localStorage.setItem("auth", JSON.stringify(auth));
+  }, [auth]);
 
-const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
+  const login = (userData) => {
+    setAuth({ isAuthenticated: true, user: userData });
+  };
 
-  const login = (user) => dispatch({ type: "LOGIN", payload: user });
-  const logout = () => dispatch({ type: "LOGOUT" });
+  const logout = () => {
+    setAuth({ isAuthenticated: false, user: null });
+    localStorage.removeItem("auth");
+  };
 
   return (
-    <AuthContext.Provider value={{ auth: state, login, logout }}>
+    <AuthContext.Provider value={{ auth, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export { AuthContext, AuthProvider };
+
