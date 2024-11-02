@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://marcconrad.com/uob/banana/doc.php",
+  baseURL: process.env.BANANA_API,
 });
 
 export default api;
