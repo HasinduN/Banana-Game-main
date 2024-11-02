@@ -46,7 +46,7 @@ const Game = () => {
       {questionImage ? (
         <img src={questionImage} alt="Question" className="question-image" />
       ) : (
-        <p>Loading question...</p>
+        <p>Loading the game...</p>
       )}
       <input
         type="text"

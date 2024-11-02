@@ -18,8 +18,8 @@ const Register = () => {
         password,
       });
 
-      if (response.status === 200) {
-        navigate("/login"); // Redirect to login page after successful registration
+      if (response.status === 201 || response.status === 200) {
+        window.location.href = "/login";
       }
     } catch (error) {
       console.error("Registration error:", error);
