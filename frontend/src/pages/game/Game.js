@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Game.css"; // Import external CSS
+import "./Game.css";
 
 const Game = () => {
   const [questionImage, setQuestionImage] = useState(null);

@@ -1,9 +1,8 @@
-// backend/controllers/gameController.js
 import fetch from "node-fetch";
 import Score from "../models/Score.js";
 
 export const getGameData = async (req, res) => {
-  const apiUrl = "https://marcconrad.com/uob/banana/api.php?out=csv&base64=yes";
+  const apiUrl = process.env.BANANA_API_URL;
   try {
     const response = await fetch(apiUrl);
 
@@ -34,18 +33,5 @@ export const submitScore = async (req, res) => {
   } catch (error) {
     console.error("Error submitting score:", error);
     res.status(500).json({ message: "Failed to submit score" });
-  }
-};
-
-export const getLeaderboard = async (req, res) => {
-  try {
-    const leaderboard = await Score.find()
-      .sort({ score: -1 })
-      .populate("user", "username")
-      .limit(10);
-    res.status(200).json(leaderboard);
-  } catch (error) {
-    console.error("Error fetching leaderboard:", error);
-    res.status(500).json({ message: "Failed to fetch leaderboard" });
   }
 };

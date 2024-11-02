@@ -1,4 +1,3 @@
-// backend/models/Score.js
 import mongoose from "mongoose";
 
 const scoreSchema = new mongoose.Schema({
