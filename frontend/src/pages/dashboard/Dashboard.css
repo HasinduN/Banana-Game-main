@@ -28,17 +28,19 @@
     transition: background-color 0.3s ease;
     width: 100%;
     max-width: 300px;
+    background-color: #ffee00;;
+    color: #000000;
   }
   
   /* Button hover effect */
   .dashboard-button:hover {
-    background-color: #5a5a5a;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
   }
   
   /* Specific styling for the logout button */
   .logout-button {
-    background-color: #d9534f;
+    background-color: #f80800;
     color: white;
   }
   

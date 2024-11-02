@@ -6,7 +6,7 @@
     padding: 20px;
     max-width: 400px;
     margin: auto;
-    background-color: #ffffff; /* White background */
+    background-color: #000000; /* White background */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
     margin-top: 50px;
@@ -15,7 +15,7 @@
   /* Title styling */
   .register-container h2 {
     font-size: 28px;
-    color: #333;
+    color: #ffee00;
     margin-bottom: 20px;
   }
   
@@ -35,8 +35,8 @@
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    color: white;
-    background-color: #007bff;
+    color: rgb(0, 0, 0);
+    background-color: #ffee00;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -46,7 +46,7 @@
   }
   
   .register-button:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
   }
   
   /* Error message styling */

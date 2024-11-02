@@ -9,13 +9,15 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Game from "./pages/game/Game";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
+import Welcome from "./pages/welcome/Welcome";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
             path="/dashboard"
